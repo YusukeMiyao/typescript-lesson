@@ -1,16 +1,17 @@
 "use strict";
 class Person {
-    constructor(initName) {
+    constructor(initName, initAge) {
         this.name = initName;
+        this.age = initAge;
     }
-    gereeting() {
-        console.log(`Hello! My name is ${this.name}`);
+    incrementAge() {
+        this.age += 1;
+    }
+    greeting() {
+        console.log(`Hello! My name is ${this.name}. I am ${this.age} years old`);
     }
 }
-const quill = new Person('Qill');
-quill.gereeting();
-const anotherQuill = {
-    name: 'anotherQuill',
-    anotherGreeting: quill.gereeting
-};
-anotherQuill.anotherGreeting();
+let person2;
+const quill = new Person('Qill', 38);
+quill.incrementAge();
+quill.greeting();
