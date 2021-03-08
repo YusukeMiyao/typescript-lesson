@@ -4,14 +4,16 @@ class Person {
         this.name = initName;
     }
 
-    gereeting(this:{name: string}) {
+    greeting(this:Person) {
         console.log(`Hello! My name is ${this.name}`);
     }
 }
+let person2: Person;
 const quill = new Person('Qill');
-quill.gereeting()
+quill.greeting()
 const anotherQuill = {
-    name:'anotherQuill',
-    anotherGreeting: quill.gereeting
+    name: 'anotherQuill',
+    greeting:quill.greeting
+    
 }
-anotherQuill.anotherGreeting()
+anotherQuill.greeting();
