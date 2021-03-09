@@ -20,11 +20,17 @@ function describeProfile(nomadWorker) {
     }
 }
 class Dog {
+    constructor() {
+        this.kind = 'dog';
+    }
     speak() {
         console.log('bow-wow');
     }
 }
 class Bird {
+    constructor() {
+        this.kind = 'bird';
+    }
     speak() {
         console.log('tweet-tweet');
     }
@@ -34,8 +40,15 @@ class Bird {
 }
 function havePet(pet) {
     pet.speak();
+    switch (pet.kind) {
+        case 'bird':
+            pet.fly();
+    }
     if (pet instanceof Bird) {
         pet.fly();
     }
 }
 havePet(new Bird());
+// const input =document.getElementById('input') as HTMLInputElement;
+// input.value = 'initial input value';
+document.getElementById('input').value = 'initial input value';
