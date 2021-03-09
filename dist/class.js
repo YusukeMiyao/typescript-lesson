@@ -4,14 +4,40 @@ class Person {
         this.name = name;
         this.age = age;
     }
+    static isAdult(age) {
+        if (age > 17)
+            return true;
+        return false;
+    }
     incrementAge() {
         this.age += 1;
     }
     greeting() {
         console.log(`Hello! My name is ${this.name}. I am ${this.age} years old`);
+        this.explainJob();
     }
 }
-let person2;
-const quill = new Person('Qill', 38);
-quill.incrementAge();
-quill.greeting();
+Person.spcies = 'Homo sapiens';
+class Teacher extends Person {
+    constructor(name, age, _subject) {
+        super(name, age);
+        this._subject = _subject;
+    }
+    explainJob() {
+        console.log(`I am a teacher and I teach ${this.subject}.`);
+    }
+    get subject() {
+        if (!this._subject) {
+            throw new Error('There is no subject');
+        }
+        return '';
+    }
+    set subject(value) {
+        if (!value) {
+            throw new Error('There is no subject');
+        }
+        this._subject = value;
+    }
+}
+const teacher = new Teacher('Quill', 38, 'Math');
+teacher.greeting();
