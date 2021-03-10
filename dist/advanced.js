@@ -1,15 +1,17 @@
 "use strict";
+var _a, _b, _c;
 const quill = {
     name: 'Quill',
     role: 'front-end',
     follower: 1000
 };
-function toUppercase(x) {
+function toUpperCase(x) {
     if (typeof x === 'string') {
         return x.toUpperCase();
     }
-    return '';
+    return x;
 }
+const upperHello = toUpperCase('hello');
 function describeProfile(nomadWorker) {
     console.log(nomadWorker.name);
     if ('role' in nomadWorker) {
@@ -49,6 +51,35 @@ function havePet(pet) {
     }
 }
 havePet(new Bird());
-// const input =document.getElementById('input') as HTMLInputElement;
-// input.value = 'initial input value';
+const input = document.getElementById('input');
+input.value = 'initial input value';
 document.getElementById('input').value = 'initial input value';
+const designer = {
+    name: 'Quill',
+    role: 'web'
+};
+const downloadedData = {
+    id: 1
+};
+console.log((_b = (_a = downloadedData.user) === null || _a === void 0 ? void 0 : _a.name) === null || _b === void 0 ? void 0 : _b.first);
+const userData = (_c = downloadedData.user) !== null && _c !== void 0 ? _c : 'no-user';
+var Color;
+(function (Color) {
+    Color[Color["RED"] = 0] = "RED";
+    Color[Color["BLUE"] = 1] = "BLUE";
+})(Color || (Color = {}));
+class AdvancedPerson {
+    constructor() {
+        this.name = 'Peter';
+        this.age = 35;
+    }
+}
+class AdvancedCar {
+    constructor() {
+        this.name = 'Prius';
+        this.age = 5;
+    }
+}
+let target = new AdvancedPerson();
+let source = new AdvancedCar();
+target = source;

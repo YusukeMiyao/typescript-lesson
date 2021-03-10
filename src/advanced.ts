@@ -16,12 +16,16 @@ const quill: EngineerBlogger = {
 type NumberBoolean = number | boolean;
 type StringNumber = string | number;
 type Mix = NumberBoolean & StringNumber;
-function toUppercase(x: string | number) {
+
+function toUpperCase(x: number): number;
+function toUpperCase(x: string): string;
+function toUpperCase(x: string | number):string | number {
     if (typeof x === 'string') {
         return x.toUpperCase();
     }
-    return '';
+    return x;
 }
+const upperHello = toUpperCase('hello')
 type NomadWorker = Engineer | Blogger;
 function describeProfile(nomadWorker: NomadWorker) {
     console.log(nomadWorker.name);
@@ -60,6 +64,45 @@ function havePet(pet: Pet) {
 }
 havePet(new Bird());
 
-// const input =document.getElementById('input') as HTMLInputElement;
-// input.value = 'initial input value';
+const input =document.getElementById('input') as HTMLInputElement;
+input.value = 'initial input value';
 (document.getElementById('input') as HTMLInputElement).value = 'initial input value';
+
+interface Designer {
+    name: string;
+    [index: string]: string;
+}
+const designer: Designer = {
+    name: 'Quill',
+    role:'web'
+}
+interface DownloadedData {
+    id: number;
+    user?:{
+        name?: {
+            first: string;
+            last: string;
+        }
+    }
+}
+const downloadedData: DownloadedData = {
+id:1
+}
+console.log(downloadedData.user?.name?.first)
+const userData = downloadedData.user ?? 'no-user';
+type id = DownloadedData['id' | 'user']
+enum Color {
+    RED ,
+    BLUE 
+}
+class AdvancedPerson {
+    name: string = 'Peter'
+    age: number = 35;
+}
+class AdvancedCar {
+    name: string = 'Prius'
+    age: number = 5;
+}
+let target = new AdvancedPerson();
+let source = new AdvancedCar();
+target = source
