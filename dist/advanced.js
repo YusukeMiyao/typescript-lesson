@@ -85,4 +85,11 @@ let target = new AdvancedPerson();
 let source = new AdvancedCar();
 target = source;
 function advancedFn(...args) { }
-console.log(advancedFn(0, 'hi', true, 3, 3));
+advancedFn(0, 1);
+let milk = 'milk';
+let drink = milk;
+const array = [10, 20];
+const peter = {
+    name: 'Peter',
+    age: 38
+};
