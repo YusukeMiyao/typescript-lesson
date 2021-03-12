@@ -128,3 +128,6 @@ class AdvancedCar {
 let target = new AdvancedPerson();
 let source = new AdvancedCar();
 target = source
+
+function advancedFn(...args: [number, string, boolean, ...number[]]) { }
+console.log(advancedFn(0, 'hi', true, 3, 3))

@@ -84,3 +84,5 @@ class AdvancedCar {
 let target = new AdvancedPerson();
 let source = new AdvancedCar();
 target = source;
+function advancedFn(...args) { }
+console.log(advancedFn(0, 'hi', true, 3, 3));
