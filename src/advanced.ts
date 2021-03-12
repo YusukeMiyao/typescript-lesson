@@ -17,15 +17,37 @@ type NumberBoolean = number | boolean;
 type StringNumber = string | number;
 type Mix = NumberBoolean & StringNumber;
 
-function toUpperCase(x: number): number;
 function toUpperCase(x: string): string;
+function toUpperCase(x: number): number;
 function toUpperCase(x: string | number):string | number {
     if (typeof x === 'string') {
         return x.toUpperCase();
     }
     return x;
+    
 }
-const upperHello = toUpperCase('hello')
+interface TmpFunc {
+    (x: string): number;
+    (x: string): number;
+    }
+const upperHello: TmpFunc = function (x: string | number) { return 0 };
+// interface FuncA {
+//     (a: number, b: string): number;
+//     (a: string, b: number): number;
+// }
+// interface FuncB {
+//     (a: string): number;
+// }
+// let intersectionFunc: FuncA & FuncB;
+// intersectionFunc = function(a: number | string,b?: number | string ){return 0}
+interface FuncA {
+    (a: number, b: string): number;
+}
+interface FuncB {
+    (a: string): string;
+}
+let unionFunc: FuncA | FuncB;
+    
 type NomadWorker = Engineer | Blogger;
 function describeProfile(nomadWorker: NomadWorker) {
     console.log(nomadWorker.name);
