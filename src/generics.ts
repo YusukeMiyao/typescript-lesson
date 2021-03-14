@@ -45,4 +45,16 @@ interface ResponseData<T extends{message: string}= any> {
     data: T;
     status: number;
 }
-let tmp2: ResponseData
+let Genericstmp2: ResponseData
+interface Vegetables {
+   readonly tomato: string;
+    pumpkin?: string;
+}
+let Genericstmp3: keyof Vegetables;
+type MappedTypes = {
+  - readonly [P in keyof Vegetables]-?: string
+}
+type ConditionalTypes = 'tomato' extends string ? number : boolean;
+type ConditionalTypsInfer = { tomato: string } extends { tomato: infer R } ? R : boolean;
+type DistributeveConditionalTypes<T> = T extends 'tomato' ? number : boolean;
+let Genericstmp4: DistributeveConditionalTypes<'tomato' | 'pumpkin'>

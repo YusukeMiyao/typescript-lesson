@@ -33,4 +33,6 @@ fetchData.then(data => {
     data.toUpperCase();
 });
 const vegetables = ['Tomato', 'Broccoli'];
-let tmp2;
+let Genericstmp2;
+let Genericstmp3;
+let Genericstmp4;
