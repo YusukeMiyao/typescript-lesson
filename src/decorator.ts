@@ -34,18 +34,45 @@ function MethodLogging(target: any, propertyKey: string, descriptor:PropertyDesc
     console.log(propertyKey);
     console.log(descriptor)
 }
+function enumerable(isEnumerable: boolean) {
+    return function (target:any,propertyKey: string, descriptor:PropertyDescriptor) {
+        return {
+            enumerable: isEnumerable
+        }
+    }
+}
+function AccessorLogging(target: any, propertyKey: string, descriptor:PropertyDescriptor) {
+    console.log('AccessorLogging');
+    console.log(target);
+    console.log(propertyKey);
+    console.log(descriptor)
+}
+function ParameterLogging(target: any, propertyKey: string, parameterIndex:number) {
+    console.log('ParamerterLogging');
+    console.log(target);
+    console.log(propertyKey);
+    console.log(parameterIndex)
+}
 
 @Logging('Loging User')
 @Component('<h1>{{name}}</h1>','#app')
 class User {
     @PropertyLogging
     name = 'Quill';
-    constructor(public age: number) {
+    constructor(private _age: number) {
         console.log('User was created')
     }
+    @AccessorLogging
+    get age() {
+        return this._age;
+    }
+    set age(value) {
+        this._age = value;
+    }
+    @enumerable(false)
     @MethodLogging
-     greeting(){
-            console.log('Hello')
+     greeting(@ParameterLogging message: string){
+            console.log(message);
         }
 }
 const user1 = new User(32)
