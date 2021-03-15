@@ -5,8 +5,6 @@ function Logging(message: string) {
     console.log(constructor)
 };
 }
-
-console.dir(Logging)
 function Component(template: string, selector: string) {
     console.log('Component Factry')
     return function<T extends {new(...args: any[]):{name:string}}>(constructor:T) {
@@ -30,6 +28,12 @@ function PropertyLogging(target: any, propertyKey: string) {
     console.log(target);
     console.log(propertyKey);
 }
+function MethodLogging(target: any, propertyKey: string, descriptor:PropertyDescriptor) {
+    console.log('MethodLogging');
+    console.log(target);
+    console.log(propertyKey);
+    console.log(descriptor)
+}
 
 @Logging('Loging User')
 @Component('<h1>{{name}}</h1>','#app')
@@ -39,6 +43,7 @@ class User {
     constructor(public age: number) {
         console.log('User was created')
     }
+    @MethodLogging
      greeting(){
             console.log('Hello')
         }
