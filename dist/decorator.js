@@ -12,28 +12,46 @@ function Logging(message) {
         console.log(constructor);
     };
 }
+console.dir(Logging);
 function Component(template, selector) {
     console.log('Component Factry');
     return function (constructor) {
-        const mountedElement = document.querySelector(selector);
-        console.log('Component');
-        const instance = new constructor();
-        if (mountedElement) {
-            mountedElement.innerHTML = template;
-            mountedElement.querySelector('h1').textContent = instance.name;
-        }
+        return class extends constructor {
+            constructor(...args) {
+                super(...args);
+                console.log('Componet');
+                const mountedElement = document.querySelector(selector);
+                const instance = new constructor();
+                if (mountedElement) {
+                    mountedElement.innerHTML = template;
+                    mountedElement.querySelector('h1').textContent = instance.name;
+                }
+            }
+        };
     };
 }
+function PropertyLogging(target, propertyKey) {
+    console.log('propertyLogging');
+    console.log(target);
+    console.log(propertyKey);
+}
 let User = class User {
-    constructor() {
+    constructor(age) {
+        this.age = age;
         this.name = 'Quill';
         console.log('User was created');
     }
+    greeting() {
+        console.log('Hello');
+    }
 };
+__decorate([
+    PropertyLogging
+], User.prototype, "name", void 0);
 User = __decorate([
     Logging('Loging User'),
     Component('<h1>{{name}}</h1>', '#app')
 ], User);
-const user1 = new User();
-const user2 = new User();
-const user3 = new User();
+const user1 = new User(32);
+const user2 = new User(32);
+const user3 = new User(32);
